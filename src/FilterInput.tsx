@@ -80,8 +80,10 @@ export default class FilterInput extends React.Component<any, any> {
             return true;
         });
 
-        ref.editor.on("changes", () => {
-            this.handlePressingAnyCharacter();
+        ref.editor.on("changes", (cm, e?) => {
+            if (ref.editor.hasFocus()) {
+                this.handlePressingAnyCharacter();
+            }
         })
 
         ref.editor.on("focus", (cm, e?) => {
